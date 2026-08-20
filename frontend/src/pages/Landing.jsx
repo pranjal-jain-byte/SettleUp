@@ -48,7 +48,7 @@ export default function Landing() {
         </div>
 
         <h1 className="font-display text-xl font-bold tracking-tight text-white mb-1 text-left">
-          Split smarter, settle faster.
+          Settle up. Stay connected.
         </h1>
         <p className="text-white/50 text-sm mb-5 text-left">
           No account needed to get started.

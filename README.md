@@ -1,8 +1,8 @@
-# SplitSmart
+# SettleUp
 
 > An AI-powered, real-time group expense splitting application built on the MERN stack.
 
-SplitSmart eliminates the complexity of shared expenses — whether it's a group dinner, a trip, or shared living costs. It combines AI receipt scanning, live cooperative item claiming, and an optimized debt settlement engine to make splitting fair, fast, and frictionless.
+SettleUp eliminates the complexity of shared expenses — whether it's a group dinner, a trip, or shared living costs. It combines AI receipt scanning, live cooperative item claiming, and an optimized debt settlement engine to make splitting fair, fast, and frictionless.
 
 ---
 
@@ -199,8 +199,8 @@ Ensure the following are installed on your machine before proceeding:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Miso-sou/splitSmart.git
-cd splitSmart
+git clone https://github.com/pranjal-jain-byte/SettleUp.git
+cd SettleUp
 ```
 
 ---
@@ -221,7 +221,7 @@ Populate `backend/.env` with the following:
 
 ```env
 PORT=5000
-MONGO_URI=mongodb+srv://<db_user>:<password>@cluster.xxxx.mongodb.net/splitsmart?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://<db_user>:<password>@cluster.xxxx.mongodb.net/settleup?retryWrites=true&w=majority
 JWT_SECRET=<strong_random_string_for_access_tokens>
 JWT_REFRESH_SECRET=<separate_strong_random_string_for_refresh_tokens>
 GEMINI_API_KEY=AIzaSy...YourGeminiKeyHere

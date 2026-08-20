@@ -43,7 +43,7 @@ export default function Register() {
           Create account
         </h1>
         <p className="text-white/50 text-sm mb-5 text-left">
-          Join SplitSmart today
+          Join SettleUp today
         </p>
 
         <form onSubmit={handleSubmit} className="w-full space-y-3">

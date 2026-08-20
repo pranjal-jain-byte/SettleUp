@@ -36,7 +36,7 @@ export default function ShareGroupModal({ isOpen, onClose, group }) {
   }
 
   const handleWhatsAppShare = () => {
-    const text = `Join my expense group "${group.name}" on SplitSmart!\n\n${inviteLink}`
+    const text = `Join my expense group "${group.name}" on SettleUp!\n\n${inviteLink}`
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank')
   }
 

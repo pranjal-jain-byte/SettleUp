@@ -1,4 +1,4 @@
-name: SplitSmart CI Pipeline
+name: SettleUp CI Pipeline
 
 on:
   push:
@@ -61,4 +61,4 @@ jobs:
           cd frontend
           npm run build
         env:
-          VITE_API_URL: https://splitsmart-backend.onrender.com # Placeholder default for the build step, can be overwritten via Vercel dashboard secrets
+          VITE_API_URL: https://settleup-backend.onrender.com # Placeholder default for the build step, can be overwritten via Vercel dashboard secrets

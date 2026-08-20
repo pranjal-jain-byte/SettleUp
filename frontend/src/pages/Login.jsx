@@ -47,7 +47,7 @@ export default function Login() {
         </div>
 
         <h1 className="font-display text-xl font-bold tracking-tight text-white mb-1 text-left">
-          Welcome to SplitSmart
+          Welcome to SettleUp
         </h1>
         <p className="text-white/50 text-sm mb-5 text-left">
           Please sign in or sign up below.

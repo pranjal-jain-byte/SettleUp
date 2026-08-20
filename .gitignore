@@ -1,13 +1,13 @@
-interviewpoints.md
-# dependencies
+# Dependencies
 node_modules/
 
-# environment variables
+# Environment variables
 .env
 .env.local
 .env.production
+!.env.example
 
-# logs
+# Logs
 logs/
 *.log
 npm-debug.log*
@@ -20,29 +20,28 @@ Thumbs.db
 .vscode/
 .idea/
 
-# build output
+# Build output
 dist/
 build/
 
-# coverage
+# Coverage
 coverage/
 
-# misc
+# Misc
 *.tgz
-.cache
+.cache/
 
-# personal notes
+# Personal notes
 interviewpoints.md
 splitsmart-cursor-prompt.md
 phase3_expense_guide.md
 splitsmart-phase6-frontend-prompt.md
 analysis.md
 
-# benchmark & temporary scratch files
+# Benchmark & temporary scratch files
 backend/scratch/
 benchmark-indexing.js
 benchmarking-indexing.js
 stats-by-indexing
 stats-by-indexing.md
-
 db-indexing-for-splitsmart.md
