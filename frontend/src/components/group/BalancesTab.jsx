@@ -111,19 +111,59 @@ export default function BalancesTab({ groupId, user, data: propData, loading: pr
 
     setIsSettling(true)
     try {
-      const payload = {
-        groupId,
-        toUserId: settleTarget.to._id,
-        amount: amt,
-        note: settleNote
-      }
+      // 1. Create order on the backend
+      const orderRes = await settlementService.createRazorpayOrder(amt);
+      const { order, key_id } = orderRes.data;
 
-      await settlementService.createSettlement(payload)
-      toast.success('Settlement recorded!')
-      setSettleModalOpen(false)
-      fetchSettlements()
+      // 2. Open Razorpay Checkout
+      const options = {
+        key: key_id,
+        amount: order.amount,
+        currency: order.currency,
+        name: "SettleUp",
+        description: `Settling up with ${formatUsername(settleTarget.to)}`,
+        order_id: order.id,
+        handler: async function (response) {
+          try {
+            // 3. Verify payment on the backend
+            const verifyPayload = {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+              groupId,
+              toUserId: settleTarget.to._id,
+              amount: amt,
+              note: settleNote
+            };
+            
+            await settlementService.verifyRazorpayPayment(verifyPayload);
+            toast.success('Settlement recorded successfully!');
+            setSettleModalOpen(false);
+            fetchSettlements();
+          } catch (verifyErr) {
+            toast.error(verifyErr.response?.data?.message || 'Payment verification failed');
+            console.error(verifyErr);
+          }
+        },
+        prefill: {
+          name: formatUsername(user),
+          email: user?.email || ""
+        },
+        theme: {
+          color: "#22c55e"
+        }
+      };
+      
+      const rzp = new window.Razorpay(options);
+      
+      rzp.on('payment.failed', function (response){
+        toast.error(response.error.description || 'Payment failed');
+      });
+      
+      rzp.open();
+
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Failed to record settlement')
+      toast.error(err.response?.data?.message || 'Failed to initiate payment')
       console.error(err)
     } finally {
       setIsSettling(false)
